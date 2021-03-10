@@ -14,6 +14,7 @@
 2. Não é possível excluir o email, visto que é o identificador único do usuário
 3. Só é possível excluir um telefone caso o usuário possua mais de um
 4. Não é possível editar o telefone
+5. A única configuração alterada no standalone.xml foi o data source
 
 
 ### Especificações do projeto:
