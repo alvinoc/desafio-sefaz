@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Login</title>
+</h:head>
+<f:metadata>
+
+</f:metadata>
+<h:body>
+	<h:form id="loginForm">
+		<h5>email</h5>
+		<p:inputText value="#{loggedInUserBean.user.email}"/>
+		<h5>password</h5>
+		<p:password  value="#{loggedInUserBean.user.password}"/><br/>
+		<p:commandButton id="loginButton" value="Login" update="loginForm"
+			action="#{controllerLogin.validation}" />
+
+
+	</h:form>
+	<p:button outcome="register.xhtml?faces-redirect=true" value="Create new user." style="font-size:8" />
+</h:body>
+</html>

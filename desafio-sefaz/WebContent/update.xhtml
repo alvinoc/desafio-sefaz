@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Update User</title>
+</h:head>
+<f:metadata>
+	<f:event listener="#{phoneBean.retrieveList}" type="preRenderView" />
+	<f:event listener="#{userBean.retrieveList}" type="preRenderView" />
+</f:metadata>
+
+<h:body>
+
+
+
+	<p:layout fullPage="true">
+
+
+		<p:layoutUnit position="west">
+			<h:form id="UpdateUserForm">
+
+				<h5>name</h5>
+				<p:inputText value="#{userBean.user.name}" />
+
+				<h5>password</h5>
+				<p:inputText value="#{userBean.user.password}" />
+				<br />
+				<br />
+				<p:commandButton id="UpdateUserButton" value="Update"
+					update="UpdateUserForm"
+					action="#{controllerRegisterUser.updateUser}" />
+			</h:form>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="center">
+			<h:form id="ListPhoneForm">
+				<p:dataTable id="phoneTable" value="#{userBean.user.phones}"
+					var="phone" selectionMode="single" rowKey="#{phone.number}"
+					selection="#{phoneBean.phone}">
+
+
+					<p:ajax event="rowSelect" />
+
+					<p:column headerText="Phone">(#{phone.regionCode}) #{phone.number} - #{phone.numberType}</p:column>
+				</p:dataTable>
+
+
+				<p:commandButton id="DeletePhone" value="Delete Phone"
+					update="ListPhoneForm:phoneTable"
+					action="#{controllerRegisterUser.removePhone}" />
+			</h:form>
+		</p:layoutUnit>
+
+
+
+		<p:layoutUnit position="east">
+			<h:form id="AddPhoneForm">
+				<h5>Region Code</h5>
+				<p:inputText value="#{userBean.phoneBean.phone.regionCode}" />
+
+
+				<h5>Number</h5>
+				<p:inputText value="#{userBean.phoneBean.phone.number}" />
+
+
+				<h5>Number type</h5>
+				<p:inputText value="#{userBean.phoneBean.phone.numberType}" />
+
+				<p:commandButton id="AddPhone" value="Add Phone"
+					update=":ListPhoneForm:phoneTable" action="#{controllerRegisterUser.addPhone}" />
+			</h:form>
+		</p:layoutUnit>
+	
+
+	</p:layout> 
+
+
+
+</h:body>
+</html>

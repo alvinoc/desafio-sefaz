@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+	version="2.3">
+
+	<navigation-rule>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerLogin.validation}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/home.xhtml?faces-redirect=true</to-view-id>
+			<redirect></redirect>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>register.xhtml</from-outcome>
+			<to-view-id>/register.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/register.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerRegisterUser.registerUser}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/index.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/update.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{controllerRegisterUser.updateUser}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/home.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controllerRegisterUser.removePhone}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/home.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{controllerRegisterUser.addPhone}</from-action>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/home.xhtml?faces-redirect=true</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+	
+</faces-config>
